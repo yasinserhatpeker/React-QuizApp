@@ -3,6 +3,7 @@ import QUESTIONS from "../questions";
 import winningImg from '../assets/quiz-complete.png';
 import QuestionTimer from "./QuestionTimer";
 import Answer from "./Answer";
+import Questions from "./Questions";
 
 export default function Quiz() {
 
@@ -47,11 +48,13 @@ const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
 
   return ( 
     <div id="quiz">
-        <div id="question">
-        <QuestionTimer timeout={10000} onTimeout={handleSkip} key={activeQuestionIndex}/>
-         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-         <Answer selectedAnswer={questionAnswers[questionAnswers.length-1]} answerState={answerState} answers={QUESTIONS[activeQuestionIndex].answers} onSelect={handleSelect} key={activeQuestionIndex}/>
-    </div>
+      <Questions 
+      answerState={answerState}
+      onSelectAnswer={handleSelect}
+      questionText={QUESTIONS[activeQuestionIndex].text}
+      selectedAnswer={questionAnswers[questionAnswers.length-1]}
+      answers={QUESTIONS[activeQuestionIndex].answers}
+      />
     </div>
 
     )
