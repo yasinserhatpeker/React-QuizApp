@@ -5,7 +5,7 @@ import QuestionTimer from "./QuestionTimer";
 import Answer from "./Answer";
 
 export default function Quiz() {
-const shuffledAnswers =useRef();
+
 const [questionAnswers,setQuestionAnswers]=useState([]);
 const [answerState,setAnswerState]=useState('');
 
@@ -44,17 +44,13 @@ const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
 
     )
  }
- if(!shuffledAnswers.current) {
 
-     shuffledAnswers.current=[...QUESTIONS[activeQuestionIndex].answers];
-     shuffledAnswers.current.sort(() => Math.random() - 0.5);
- }
   return ( 
     <div id="quiz">
         <div id="question">
         <QuestionTimer timeout={10000} onTimeout={handleSkip} key={activeQuestionIndex}/>
          <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-         <Answer/>
+         <Answer selectedAnswer={questionAnswers[questionAnswers.length-1]} answerState={answerState} answers={QUESTIONS[activeQuestionIndex].answers}/>
     </div>
     </div>
 
