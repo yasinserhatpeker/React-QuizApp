@@ -49,11 +49,13 @@ const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
   return ( 
     <div id="quiz">
       <Questions 
+      key={activeQuestionIndex}
       answerState={answerState}
       onSelectAnswer={handleSelect}
       questionText={QUESTIONS[activeQuestionIndex].text}
       selectedAnswer={questionAnswers[questionAnswers.length-1]}
       answers={QUESTIONS[activeQuestionIndex].answers}
+      onSkip={handleSkip}
       />
     </div>
 
