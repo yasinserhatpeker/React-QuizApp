@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from "react"
 import QUESTIONS from "../questions";
 import winningImg from '../assets/quiz-complete.png';
 import QuestionTimer from "./QuestionTimer";
+import Answer from "./Answer";
 
 export default function Quiz() {
 const shuffledAnswers =useRef();
@@ -53,26 +54,7 @@ const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
         <div id="question">
         <QuestionTimer timeout={10000} onTimeout={handleSkip} key={activeQuestionIndex}/>
          <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-         <ul id="answers">
-            {shuffledAnswers.current.map((answer)=>{ 
-            const isSelected= questionAnswers[questionAnswers.length-1] ===answer;
-              let cssClasses ='';
-              if(answerState==='answered' && isSelected) {
-                cssClasses+='selected';
-              }
-              if((answerState==='correct' || answerState==='wrong') && isSelected) {
-                cssClasses=answerState;
-              }
-            
-            return <li key={answer} className="answer">
-                <button onClick={()=>handleSelect(answer)} className={cssClasses}>{answer}</button>
-
-            </li>
-            }
-                
-            
-           )}
-         </ul>
+         <Answer/>
     </div>
     </div>
 
