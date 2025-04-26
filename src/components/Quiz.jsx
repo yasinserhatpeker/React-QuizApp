@@ -4,8 +4,10 @@ import QUESTIONS from "../questions";
 export default function Quiz() {
 const [questionAnswers,setQuestionAnswers]=useState([]);
 
- function handleSelect(answers) {
-    setQuestionAnswers();
+ function handleSelect(selectedAnswer) {
+    setQuestionAnswers((prevAnswers)=>{
+       return [...prevAnswers,selectedAnswer];
+    });
  }
   const activeQuestionIndex=questionAnswers.length
     return <div id="question">
