@@ -51,7 +51,7 @@ const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
       <Questions 
       key={activeQuestionIndex}
       answerState={answerState}
-      onSelectAnswer={handleSelect}
+      onSelect={handleSelect}
       questionText={QUESTIONS[activeQuestionIndex].text}
       selectedAnswer={questionAnswers[questionAnswers.length-1]}
       answers={QUESTIONS[activeQuestionIndex].answers}
