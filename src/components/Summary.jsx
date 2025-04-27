@@ -1,22 +1,30 @@
 import winningImg from '../assets/quiz-complete.png'
 import QUESTIONS from "../questions";
 export default function Summary({questionAnswers}) {
+const skippedAnswers=questionAnswers.filter((answer) => answer===null);
+const correctedAnswers=questionAnswers.filter((answer,index)=> answer === QUESTIONS[index].answers[0]);
+
+const skippedAnswersShare= Math.round((skippedAnswers.length / questionAnswers.length)*100);
+const correctedAnswersShare=Math.round((correctedAnswers.length / questionAnswers.length)*100);
+const wrongAnswersShare= 100 - skippedAnswersShare - correctedAnswersShare;
+
+
     return (
         <div id="summary">
         <h2>QUIZ IS COMPLETED!</h2>
         <img src={winningImg} alt="Trophy icon" />
         <div id='summary-stats'>
             <p>
-                <span className='number'>%10</span>
-                <span className='text'>skipped</span>
+                <span className='number'>{skippedAnswersShare}%</span>
+                <span className='text'>Skipped</span>
             </p>
             <p>
-                <span className='number'>%10</span>
-                <span className='text'>answered correctly</span>
+                <span className='number'>{correctedAnswersShare}%</span>
+                <span className='text'>Answered correctly</span>
             </p>
             <p>
-                <span className='number'>%10</span>
-                <span className='text'>answered incorrectly</span>
+                <span className='number'>{wrongAnswersShare}%</span>
+                <span className='text'>Answered incorrectly</span>
             </p>
         </div>
         <ol>  
