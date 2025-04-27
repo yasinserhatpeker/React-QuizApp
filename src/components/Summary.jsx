@@ -41,7 +41,7 @@ const wrongAnswersShare= 100 - skippedAnswersShare - correctedAnswersShare;
             }
             return (
             
-            <li key={answer}>
+            <li key={index}>
                 <h3>{index + 1}</h3>
                 <p className='question-text'>{QUESTIONS[index].text}</p>
                 <p className={cssClass}>{answer ?? 'skipped'}</p>
