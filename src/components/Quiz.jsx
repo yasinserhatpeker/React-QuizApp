@@ -24,10 +24,7 @@ const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
 
  if(isQuizComplete) {
     return (
-        <div id="summary">
-            <h2>QUIZ IS COMPLETED!</h2>
-            <img src={winningImg} alt="Trophy icon" />
-        </div>
+       
 
     )
  }
