@@ -1,7 +1,7 @@
-import { useCallback, useRef, useState } from "react"
+import { useCallback,useState } from "react"
 import QUESTIONS from "../questions";
-import winningImg from '../assets/quiz-complete.png';
 import Questions from "./Questions";
+import Summary from "./Summary";
 
 export default function Quiz() {
 
@@ -24,7 +24,7 @@ const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
 
  if(isQuizComplete) {
     return (
-       
+       <Summary/>
 
     )
  }
