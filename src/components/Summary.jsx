@@ -1,5 +1,6 @@
 import winningImg from '../assets/quiz-complete.png'
-export default function Summary() {
+import QUESTIONS from "../questions";
+export default function Summary({questionAnswers}) {
     return (
         <div id="summary">
         <h2>QUIZ IS COMPLETED!</h2>
@@ -18,12 +19,17 @@ export default function Summary() {
                 <span className='text'>answered incorrectly</span>
             </p>
         </div>
-        <ol>
-            <li>
-                <h3>2</h3>
-                <p className='question-text'>question text</p>
-                <p className='user-answer'>user answer</p>
+        <ol>  
+          {questionAnswers.map((answer,index)=> {
+            return (
+            <li key={answer}>
+                <h3>{index + 1}</h3>
+                <p className='question-text'>{QUESTIONS[index].text}</p>
+                <p className='user-answer'>{answer ?? 'skipped'}</p>
             </li>
+              )
+
+          })}
         </ol>
       </div>
     )

@@ -24,7 +24,7 @@ const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
 
  if(isQuizComplete) {
     return (
-       <Summary/>
+       <Summary questionAnswers={questionAnswers}/>
 
     )
  }
